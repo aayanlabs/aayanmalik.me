@@ -3,7 +3,6 @@
 import { useRef, useEffect, useState } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
-import { a } from "@react-spring/three";
 import * as THREE from "three";
 
 interface IslandProps {
@@ -130,7 +129,7 @@ export function Island({ isRotating, setIsRotating, setCurrentStage, ...props }:
   });
 
   return (
-    <a.group ref={islandRef} {...props}>
+    <group ref={islandRef} {...props}>
       {nodes ? (
         <group dispose={null}>
           <mesh
@@ -169,6 +168,6 @@ export function Island({ isRotating, setIsRotating, setCurrentStage, ...props }:
           <meshStandardMaterial color="#00d2ff" wireframe />
         </mesh>
       )}
-    </a.group>
+    </group>
   );
 }
