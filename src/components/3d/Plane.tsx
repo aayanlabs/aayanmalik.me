@@ -7,7 +7,9 @@ import * as THREE from "three";
 
 export function Plane({ isRotating, ...props }: { isRotating: boolean; [key: string]: any }) {
   const planeRef = useRef<THREE.Group>(null);
-  const { scene, animations } = useGLTF("/assets/plane.glb") as any;
+  // const { scene, animations } = useGLTF("/assets/plane.glb") as any;
+  const scene = null as any;
+  const animations = [] as any;
   const { actions } = useAnimations(animations, planeRef);
 
   useEffect(() => {

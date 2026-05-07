@@ -5,11 +5,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Search, Home, User, Code, Terminal, Mail, X } from "lucide-react";
 
 const commands = [
-  { icon: Home, label: "Go Home", href: "#" },
-  { icon: User, label: "About Me", href: "#about" },
-  { icon: Code, label: "View Projects", href: "#projects" },
-  { icon: Terminal, label: "Skills & Tech", href: "#skills" },
-  { icon: Mail, label: "Contact Me", href: "#contact" },
+  { icon: Home, label: "Go Home", href: "/" },
+  { icon: User, label: "About Me", href: "/about" },
+  { icon: Code, label: "View Projects", href: "/projects" },
+  { icon: Terminal, label: "Skills & Tech", href: "/about#skills" },
+  { icon: Mail, label: "Contact Me", href: "/contact" },
 ];
 
 export function CommandMenu() {

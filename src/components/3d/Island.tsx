@@ -18,7 +18,9 @@ export function Island({ isRotating, setIsRotating, setCurrentStage, ...props }:
   
   // Note: Replace with actual model path later. 
   // For now, we'll try to load it, but handle errors gracefully.
-  const { nodes, materials } = useGLTF("/assets/island.glb") as any;
+  // const { nodes, materials } = useGLTF("/assets/island.glb") as any;
+  const nodes = null as any;
+  const materials = null as any;
 
   const lastX = useRef(0);
   const rotationSpeed = useRef(0);
