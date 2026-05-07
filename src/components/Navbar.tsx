@@ -1,15 +1,14 @@
 "use client";
 
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { name: "About", href: "#about" },
-  { name: "Expertise", href: "#skills" },
-  { name: "Projects", href: "#projects" },
-  { name: "Journey", href: "#timeline" },
-  { name: "Contact", href: "#contact" },
+  { name: "About", href: "/about" },
+  { name: "Projects", href: "/projects" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export function Navbar() {
@@ -34,20 +33,20 @@ export function Navbar() {
         <nav className={`flex items-center justify-between glass rounded-full px-8 py-4 transition-all duration-500 ${
           isScrolled ? "bg-black/20 backdrop-blur-2xl border-white/10" : "bg-transparent border-transparent"
         }`}>
-          <a href="#" className="text-xl font-bold font-space tracking-tighter">
+          <Link href="/" className="text-xl font-bold font-space tracking-tighter">
             Aayan<span className="text-electric-blue">Labs</span>
-          </a>
+          </Link>
 
           {/* Desktop Menu */}
           <ul className="hidden md:flex items-center gap-10">
             {navLinks.map((link) => (
               <li key={link.name}>
-                <a 
+                <Link 
                   href={link.href}
                   className="text-sm font-space tracking-widest uppercase text-white/50 hover:text-white transition-colors"
                 >
                   {link.name}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -78,13 +77,13 @@ export function Navbar() {
             <ul className="flex flex-col gap-6">
               {navLinks.map((link) => (
                 <li key={link.name}>
-                  <a 
+                  <Link 
                     href={link.href}
                     onClick={() => setIsMobileMenuOpen(false)}
                     className="text-2xl font-bold block"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
