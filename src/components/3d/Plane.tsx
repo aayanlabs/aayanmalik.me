@@ -27,11 +27,29 @@ export function Plane({ isRotating, ...props }: { isRotating: boolean; [key: str
       {scene ? (
         <primitive object={scene} />
       ) : (
-        /* Fallback: Simple box plane */
-        <mesh>
-          <boxGeometry args={[1, 0.2, 2]} />
-          <meshStandardMaterial color="#ff0000" />
-        </mesh>
+        /* Enhanced Procedural Plane Fallback */
+        <group scale={[0.5, 0.5, 0.5]}>
+          {/* Body */}
+          <mesh rotation={[0, 0, Math.PI / 2]}>
+            <capsuleGeometry args={[0.5, 2, 8, 16]} />
+            <meshStandardMaterial color="#e53935" />
+          </mesh>
+          {/* Wings */}
+          <mesh position={[0, 0, 0]}>
+            <boxGeometry args={[5, 0.1, 1]} />
+            <meshStandardMaterial color="#ffffff" />
+          </mesh>
+          {/* Tail */}
+          <mesh position={[-1, 0.5, 0]} rotation={[0, 0, 0.5]}>
+            <boxGeometry args={[1, 1, 0.1]} />
+            <meshStandardMaterial color="#e53935" />
+          </mesh>
+          {/* Propeller Hub */}
+          <mesh position={[1.2, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
+            <sphereGeometry args={[0.3, 16, 16]} />
+            <meshStandardMaterial color="#212121" />
+          </mesh>
+        </group>
       )}
     </mesh>
   );

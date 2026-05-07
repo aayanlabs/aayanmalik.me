@@ -22,14 +22,27 @@ export function Sky({ isRotating }: { isRotating: boolean }) {
       {nodes ? (
         <primitive object={nodes.Sky_Material_0} />
       ) : (
-        /* Fallback: High quality gradient sphere */
-        <mesh>
-          <sphereGeometry args={[500, 64, 64]} />
-          <meshBasicMaterial 
-            color="#001529" 
-            side={THREE.BackSide} 
-          />
-        </mesh>
+        /* Enhanced Procedural Sky Fallback */
+        <group>
+          <mesh>
+            <sphereGeometry args={[500, 64, 64]} />
+            <meshBasicMaterial color="#000814" side={THREE.BackSide} />
+          </mesh>
+          {/* Stars */}
+          {Array.from({ length: 200 }).map((_, i) => (
+            <mesh 
+              key={i} 
+              position={[
+                (Math.random() - 0.5) * 800,
+                (Math.random() - 0.5) * 800,
+                (Math.random() - 0.5) * 800
+              ]}
+            >
+              <sphereGeometry args={[Math.random() * 0.5, 8, 8]} />
+              <meshBasicMaterial color="#ffffff" />
+            </mesh>
+          ))}
+        </group>
       )}
     </mesh>
   );

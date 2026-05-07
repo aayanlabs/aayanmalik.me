@@ -164,11 +164,46 @@ export function Island({ isRotating, setIsRotating, setCurrentStage, ...props }:
           />
         </group>
       ) : (
-        /* Fallback Placeholder */
-        <mesh>
-          <torusKnotGeometry args={[10, 3, 100, 16]} />
-          <meshStandardMaterial color="#00d2ff" wireframe />
-        </mesh>
+        /* Enhanced Procedural Island Fallback */
+        <group scale={[0.1, 0.1, 0.1]}>
+          {/* Grassy Top */}
+          <mesh position={[0, 0, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+            <cylinderGeometry args={[50, 45, 10, 32]} />
+            <meshStandardMaterial color="#2d5a27" />
+          </mesh>
+
+          {/* Rocky Bottom */}
+          <mesh position={[0, -25, 0]} rotation={[Math.PI, 0, 0]}>
+            <coneGeometry args={[45, 50, 8]} />
+            <meshStandardMaterial color="#4a3b31" />
+          </mesh>
+
+          {/* Trees */}
+          {[
+            [20, 10, 20], [-15, 10, 25], [30, 10, -10], [-25, 10, -20], [0, 10, 35]
+          ].map((pos, i) => (
+            <group key={i} position={pos as [number, number, number]}>
+              <mesh position={[0, 5, 0]}>
+                <cylinderGeometry args={[1, 1.5, 10, 8]} />
+                <meshStandardMaterial color="#5d4037" />
+              </mesh>
+              <mesh position={[0, 15, 0]}>
+                <sphereGeometry args={[8, 12, 12]} />
+                <meshStandardMaterial color="#388e3c" />
+              </mesh>
+            </group>
+          ))}
+
+          {/* Rocks */}
+          {[
+            [35, 5, 10], [-30, 5, -5], [10, 5, -40], [-5, 5, 20]
+          ].map((pos, i) => (
+            <mesh key={i} position={pos as [number, number, number]} rotation={[Math.random(), Math.random(), Math.random()]}>
+              <boxGeometry args={[8, 8, 8]} />
+              <meshStandardMaterial color="#757575" />
+            </mesh>
+          ))}
+        </group>
       )}
     </group>
   );
