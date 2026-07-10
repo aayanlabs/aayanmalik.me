@@ -1,10 +1,10 @@
-import { Navbar } from "@/components/Navbar";
 import { AboutSection } from "@/components/AboutSection";
+import { Footer } from "@/components/Footer";
+import { Navbar } from "@/components/Navbar";
 import { SkillsSection } from "@/components/SkillsSection";
 import { TimelineSection } from "@/components/TimelineSection";
-import { Footer } from "@/components/Footer";
 
-export default function About() {
+export default function AboutPage() {
   return (
     <main className="flex min-h-screen flex-col bg-background selection:bg-electric-blue selection:text-white pt-20">
       <Navbar />
